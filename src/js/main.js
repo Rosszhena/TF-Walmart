@@ -12,15 +12,17 @@ renderInfo = (data) => {
                 //console.log(message);
 
             if (searchT != null) {
+                var array1 = [];
                 result += `<div class="card">
                              <div class="info">
                              <p>Id: ${data[prop].id}</p> 
                              <p>Name: ${data[prop].user.name}</p>
                              <img src="${data[prop].user.biggerProfileImageURL}" alt="Smiley face" height="42" width="42">
                                 <p>Name: ${data[prop].user.name}</p>
-                                <p>Name: ${data[prop].user.screenName}</p> 
+                                <p>Name: ${data[prop].followers}</p> 
                                 <p>Twitte: ${data[prop].text}</p>
-                                <p>Fecha: ${data[prop].createdAd}</p>
+                                
+                                <p>Fecha: ${data[prop].hashtagEntities.text}</p>
                                 <input type="text" id="myTextResponse" value="Some text...">
                                 <a class='btn-send' data-message="${data[prop].user.screenName}, ">Try it</a>
                              </div>
@@ -63,14 +65,3 @@ tweetResponse = (keyData) => {
         .then(response => console.log('Success:', response));
 
 }
-
-
-
-/*
-document.getElementsByClass('btn-delete').addEventListener('click', (event) => {
-
-
-    //container.innerHTML = '';
-    console.log("prueba");
-
-})*/
