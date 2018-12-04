@@ -22,7 +22,7 @@ renderInfo = (data) => {
                                 <p>Twitte: ${data[prop].text}</p>
                                 <p>Fecha: ${data[prop].createdAd}</p>
                                 <input type="text" id="myTextResponse" value="Some text...">
-                                <a class='btn-send' data-message="${data[prop].id}, ">Try it</a>
+                                <a class='btn-send' data-message="${data[prop].user.screenName}, ">Try it</a>
                              </div>
                          </div>`
             }
@@ -33,9 +33,9 @@ renderInfo = (data) => {
                     // console.log(elementsTweets[i]);
                     elementsTweets[i].addEventListener('click', e => {
                         let key = e.target;
-                        let keyDataDelete = key.getAttribute("data-message");
-                        console.log(keyDataDelete)
-                        tweetResponse();
+                        let keyData = key.getAttribute("data-message");
+                        console.log(keyData)
+                        tweetResponse(keyData);
                     });
                 };
 
@@ -44,10 +44,13 @@ renderInfo = (data) => {
     });
 }
 
-tweetResponse = () => {
+tweetResponse = (keyData) => {
     console.log("funcion tweetResponse")
+    console.log(keyData)
+
     var url = 'https://wmt-laboratoria.herokuapp.com/tweets';
-    var data = "En seguimiento a tu pedido"
+    var data = "En seguimiento a tu pedido @" + keyData;
+
 
     fetch(url, {
             method: 'POST',
